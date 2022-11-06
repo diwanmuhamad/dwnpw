@@ -1,129 +1,145 @@
-.container {
-  padding: 0 2rem;
+.mainContainer {
+  width: 100%;
+  background-color: black;
 }
 
-.main {
-  min-height: 100vh;
-  padding: 4rem 0;
-  flex: 1;
+.titleLogo {
+  font-weight: 600;
+  font-size: 32px;
+  color: white;
+}
+
+.navbarComponent {
   display: flex;
-  flex-direction: column;
-  justify-content: center;
+  justify-content: space-between;
+  /* border: 2px solid white; */
   align-items: center;
+  padding: 18px 40px;
+  padding-right: 60px;
+  height: 22.5vh;
+  /* position: fixed; */
 }
 
-.footer {
+.menuNavbar {
   display: flex;
-  flex: 1;
-  padding: 2rem 0;
-  border-top: 1px solid #eaeaea;
-  justify-content: center;
-  align-items: center;
+  justify-content: space-between;
+  width: 45%;
+  min-width: 400px;
 }
 
-.footer a {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-grow: 1;
+.menuNavbar > li {
+  list-style-type: none;
+  color: white;
+  cursor: pointer;
 }
 
-.title a {
-  color: #0070f3;
-  text-decoration: none;
+.menuNavbar > li:hover {
+  border-bottom: 1px solid yellow;
 }
 
-.title a:hover,
-.title a:focus,
-.title a:active {
-  text-decoration: underline;
+.homeMainContent {
+  width: 100%;
+  height: 77.5vh;
+  position: relative;
+  /* border: 2px solid white; */
 }
 
-.title {
-  margin: 0;
-  line-height: 1.15;
-  font-size: 4rem;
+.imageAuthor {
+  /* border: 2px solid white; */
+  /* margin: auto; */
+  position: absolute;
+  bottom: 0;
+  width: 60%;
+  left: 35%;
+  height: 100%;
 }
 
-.title,
-.description {
+.textContent {
+  position:absolute;
+  animation-name: moveIn;
+  left: 13%;
+  animation-duration: 2s;
+}
+
+.subtitle {
+  color: white;
+  font-size: 25px;
+  font-weight: 200;
+  opacity: .5;
+}
+
+.buttonGetInTouch {
+  width: 150px;
+  height: 70px;
+  border: 1px solid white;
+  color: white;
   text-align: center;
+  margin-top: 50px;
+  cursor: pointer;
 }
 
-.description {
-  margin: 4rem 0;
-  line-height: 1.5;
-  font-size: 1.5rem;
+.buttonGetInTouch:hover {
+  /* opacity: .6; */
+  border: 1px solid yellow;
+  color: yellow;
 }
 
-.code {
-  background: #fafafa;
-  border-radius: 5px;
-  padding: 0.75rem;
-  font-size: 1.1rem;
-  font-family: Menlo, Monaco, Lucida Console, Liberation Mono, DejaVu Sans Mono,
-    Bitstream Vera Sans Mono, Courier New, monospace;
+@keyframes moveIn {
+  0%   {left: -500px;}
+  100% {left: 13%;}
 }
 
-.grid {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-wrap: wrap;
-  max-width: 800px;
+.hamburger {
+  display: none;
+  font-size: 28px;
+  cursor: pointer;
 }
 
-.card {
-  margin: 1rem;
-  padding: 1.5rem;
-  text-align: left;
-  color: inherit;
-  text-decoration: none;
-  border: 1px solid #eaeaea;
-  border-radius: 10px;
-  transition: color 0.15s ease, border-color 0.15s ease;
-  max-width: 300px;
+.floatingNavbar {
+  width: 100%;
+  /* color: white; */
+  position: absolute;
+  background-color: black;
+  top: 0;
+  z-index: 1;
+  height: 100vh;
+  display: none;
 }
 
-.card:hover,
-.card:focus,
-.card:active {
-  color: #0070f3;
-  border-color: #0070f3;
-}
+@media screen and (max-width: 700px) {
+  .hamburger {
+    display: block;
+    color: white;
+  }
 
-.card h2 {
-  margin: 0 0 1rem 0;
-  font-size: 1.5rem;
-}
+  .menuNavbar {
+    display: none;
+  }
 
-.card p {
-  margin: 0;
-  font-size: 1.25rem;
-  line-height: 1.5;
-}
-
-.logo {
-  height: 1em;
-  margin-left: 0.5rem;
-}
-
-@media (max-width: 600px) {
-  .grid {
-    width: 100%;
-    flex-direction: column;
+  .floatingNavbar {
+    display: block;
   }
 }
 
-@media (prefers-color-scheme: dark) {
-  .card,
-  .footer {
-    border-color: #222;
-  }
-  .code {
-    background: #111;
-  }
-  .logo img {
-    filter: invert(1);
-  }
+
+
+.floatingNavbar > ul > li {
+  list-style-type: none;
+  margin-top: 24px;
+  color: white;
+  font-size: 24px;
+  cursor: pointer;  
+  width: fit-content;
 }
+.floatingNavbar > ul > li:hover {
+  border-bottom: 2px solid yellow;
+}
+
+.xmarks {
+  cursor: pointer;
+  color: white;
+  margin-top: 63px;
+  font-size: 28px;
+  margin-left: 78%;
+}
+
