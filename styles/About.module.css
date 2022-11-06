@@ -1,0 +1,68 @@
+.aboutMainContent {
+    height: 77.5vh;
+    width: 80%; 
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+}
+
+.aboutTextContent {
+    color: white;
+    width: 47%;
+}
+
+.aboutTextContent > h3 {
+    font-size: 50px;
+    line-height: 40px;
+}
+.aboutTextContent > p {
+    font-size: 20px;
+    text-align: justify;
+}
+
+.techStack {
+    display: flex;
+    justify-content: flex-start;
+    gap: 20px;
+}
+
+.techStack > svg {
+    margin-top: 17px;
+}
+
+.nextJs {
+    background-color: white;
+    border-radius: 50px;
+    width: 45px;
+    height: 45px;
+    padding: 3px;
+    margin-top: 12px;
+}
+
+
+@media screen and (max-width: 900px) {
+    .aboutMainContent {
+        flex-direction: column;
+        height: 100%;
+        padding-bottom: 30px;
+    }
+    .aboutTextContent {
+        width: 80%;
+    }
+}
+
+@media screen and (max-width: 550px) {
+    .aboutTextContent > h3 {
+        font-size: 35px;
+        line-height: 30px;
+    }
+    .aboutTextContent > p {
+        font-size: 15px;
+    }
+
+    .techStack > h3 {
+        font-size: 10px;
+    }
+
+
+}

@@ -46,11 +46,11 @@ export default function Home() {
           <div className={styles.floatingNavbar}>
             <FontAwesomeIcon onClick={changeIcon} icon={navIcon  === "hamburger" ?faBars : faX} className={styles.xmarks}/>
             <ul>
-              <li>Home<span style={{color: 'yellow'}}>.</span></li>
-              <li>About<span style={{color: 'yellow'}}>.</span></li>
-              <li>Works<span style={{color: 'yellow'}}>.</span></li>
-              <li>Blog<span style={{color: 'yellow'}}>.</span></li>
-              <li>Contact<span style={{color: 'yellow'}}>.</span></li>
+              <li><Link href="/">Home<span style={{color: 'yellow'}}>.</span></Link></li>
+              <li><Link href="/about">About<span style={{color: 'yellow'}}>.</span></Link></li>
+              <li><Link href="/work">Work<span style={{color: 'yellow'}}>.</span></Link></li>
+              <li><Link href="/blog">Blog<span style={{color: 'yellow'}}>.</span></Link></li>
+              <li><Link href="/contact">Contact<span style={{color: 'yellow'}}>.</span></Link></li>
             </ul>
           </div>
           : null
