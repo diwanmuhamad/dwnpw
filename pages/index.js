@@ -64,7 +64,7 @@ export default function Home() {
           />
           <div className={styles.textContent}>
             <p className={styles.titleLogo} style={{fontSize: '23px'}}>Hi Everyone<span style={{color: 'yellow'}}>!</span></p>
-            <p className={styles.titleLogo} style={{fontSize: '52px', margin: '0px'}}>I<span style={{color: 'yellow'}}>'</span>m Diwan Muhamad<span style={{color: 'yellow'}}>.</span></p>
+            <p className={styles.nameTitle}>I<span style={{color: 'yellow'}}>'</span>m Diwan Muhamad<span style={{color: 'yellow'}}>.</span></p>
             <p className={styles.subtitle}>Software Developer<span style={{color: 'yellow'}}>.</span></p>
             <div className={styles.buttonGetInTouch}>
               <p style={{marginTop: '22px'}}>GET IN TOUCH</p>
