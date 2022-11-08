@@ -9,6 +9,8 @@ import Link from 'next/link'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import axios from '../src/axios';
 
+import "izitoast-react/dist/iziToast.css";
+
 // import the icons you need
 import {
   faBars, faX
@@ -22,7 +24,17 @@ export default function Contact() {
     return setNavIcon('hamburger')
   }
 
-  const handleSubmit = (e) => {
+ 
+  
+  function isEmailValid(email) {
+    const emailRegexp = new RegExp(
+      /^[a-zA-Z0-9][\-_\.\+\!\#\$\%\&\'\*\/\=\?\^\`\{\|]{0,1}([a-zA-Z0-9][\-_\.\+\!\#\$\%\&\'\*\/\=\?\^\`\{\|]{0,1})*[a-zA-Z0-9]@[a-zA-Z0-9][-\.]{0,1}([a-zA-Z][-\.]{0,1})*[a-zA-Z0-9]\.[a-zA-Z0-9]{1,}([\.\-]{0,1}[a-zA-Z]){0,}[a-zA-Z0-9]{0,}$/i
+    )
+  
+    return emailRegexp.test(email)
+  }
+
+  const handleSubmit = async (e) => {
     e.preventDefault()
     let data = new FormData(e.currentTarget);
     let temp = {
@@ -31,13 +43,63 @@ export default function Contact() {
       message: data.get('message'),
       createdAt : new Date(),
     }
+    const {useToast} = (await import("izitoast-react"))
+
+    const failMessage = useToast({
+      title: "Send Failed",
+      message: "You have incorrect input",
+      theme: "light",
+      icon: "material-icons",
+      color: "red",
+      position: 'topCenter',
+      maxWidth: '80%'
+    });
+
+    const successMessage = useToast({
+      title: "Send Success",
+      message: "Your message was successfully sent",
+      theme: "light",
+      icon: "check",
+      color: "green",
+      position: 'topCenter',
+      maxWidth: '80%'
+    });
+   
+
+    let inputName = document.getElementById('name');
+    let inputEmail = document.getElementById('email'); 
+    let inputMessage = document.getElementById('message'); 
+
+    if (!temp.names || !isEmailValid(temp.email) || !temp.message) {
+      failMessage();
+      return;
+    }
 
     axios({
       method: 'POST',
       url: '/api/posts',
       data: temp,
       headers:{"content-type" : "application/json"}
-    }).then((res)=> console.log(res)).catch((err)=>console.log(err))
+    }).then((res)=> {
+      if (res.status == 200) {
+        inputName.value = "";
+        inputEmail.value = "";
+        inputMessage.value = "";
+        successMessage();
+      }
+    }).catch((err)=> {
+      const failMessages = useToast({
+        title: "Send Failed",
+        message: "Something went wrong",
+        theme: "light",
+        icon: "material-icons",
+        color: "red",
+        position: 'topCenter',
+        maxWidth: '80%'
+      });
+      failMessages();
+      console.log(err);
+    })
   }
 
   return (
