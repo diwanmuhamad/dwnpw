@@ -28,10 +28,10 @@ export default function Contact() {
     let temp = {
       names: data.get('name'),
       email: data.get('email'),
-      message: data.get('message')
+      message: data.get('message'),
+      createdAt : new Date(),
     }
 
-    axios.get(`/api/hello`).then((res)=>console.log(res.data))
     axios({
       method: 'POST',
       url: '/api/posts',
