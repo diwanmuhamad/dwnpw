@@ -129,11 +129,11 @@ export default function Contact() {
           <div className={styles.floatingNavbar}>
             <FontAwesomeIcon onClick={changeIcon} icon={navIcon  === "hamburger" ?faBars : faX} className={styles.xmarks}/>
             <ul>
-              <li><Link href="/">Home<span style={{color: 'yellow'}}>.</span></Link></li>
-              <li><Link href="/about">About<span style={{color: 'yellow'}}>.</span></Link></li>
-              <li><Link href="/work">Work<span style={{color: 'yellow'}}>.</span></Link></li>
-              <li><Link href="/blog">Blog<span style={{color: 'yellow'}}>.</span></Link></li>
-              <li><Link href="/contact">Contact<span style={{color: 'yellow'}}>.</span></Link></li>
+              <li onClick={()=> setNavIcon('hamburger')}><Link href="/">Home<span style={{color: 'yellow'}}>.</span></Link></li>
+              <li onClick={()=> setNavIcon('hamburger')}><Link href="/about">About<span style={{color: 'yellow'}}>.</span></Link></li>
+              <li onClick={()=> setNavIcon('hamburger')}><Link href="/work">Work<span style={{color: 'yellow'}}>.</span></Link></li>
+              <li onClick={()=> setNavIcon('hamburger')}><Link href="/blog">Blog<span style={{color: 'yellow'}}>.</span></Link></li>
+              <li onClick={()=> setNavIcon('hamburger')}><Link href="/contact">Contact<span style={{color: 'yellow'}}>.</span></Link></li>
             </ul>
           </div>
           : null

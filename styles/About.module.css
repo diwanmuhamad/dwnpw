@@ -26,10 +26,16 @@
     display: flex;
     justify-content: flex-start;
     gap: 20px;
+    margin-top: 10px;
+    align-items: center;
 }
 
 .techStack > svg {
     margin-top: 17px;
+}
+
+.techStack > h3 {
+    font-size: 15px;
 }
 
 .nextJs {
@@ -42,7 +48,7 @@
 }
 
 
-@media screen and (max-width: 900px) {
+@media screen and (max-width: 1000px) {
     .aboutMainContent {
         flex-direction: column;
         height: 100%;
@@ -50,6 +56,10 @@
     }
     .aboutTextContent {
         width: 100%;
+    }
+
+    .techStack {
+        gap: 15px;
     }
 }
 
