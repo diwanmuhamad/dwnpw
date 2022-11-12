@@ -1,6 +1,7 @@
 import connectMongo  from "../../lib/mongodb";
 import user from "../../model/user";
-import { isSamePass } from "../../helperFunc/cryptpass";
+import { isSamePass, generateAccessToken } from "../../helperFunc/cryptpass";
+
 
 export default async function handler(req, res) {
  connectMongo().catch(()=>res.status(405).json({error: 'Error in the Connection'}))
@@ -33,7 +34,8 @@ export default async function handler(req, res) {
                         isSamePass(req.query.password, users[0].password)
                         .then((result) => {
                             if (result) {
-                                return res.status(200).json({info: 'login success'});
+                                let token = generateAccessToken({ username: req.query.email });
+                                return res.status(200).json({info: 'login success', token: token});
                             }
                             else {
                                 return res.status(404).json({error: 'wrong password'});
