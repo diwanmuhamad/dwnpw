@@ -4,7 +4,7 @@ import message from "../../model/message";
 export default async function handler(req, res) {
  connectMongo().catch(()=>res.status(405).json({error: 'Error in the Connection'}))
  if (req.method == 'POST') {
-    async function postUser(req, res) {
+    async function postMessage(req, res) {
       try {
         const formData = req.body;
         if (!formData) return res.status(404).json({error: 'Data not provided'})
@@ -17,6 +17,22 @@ export default async function handler(req, res) {
       }
     }
 
-    postUser(req,res);
+    postMessage(req,res);
+ }
+ else if (req.method == 'GET') {
+  async function getMessage(req, res) {
+    try {
+      message.find({}, (err, message) => {
+          if (err) {
+              return res.status(404).json({error: 'data not found'});
+          } else {
+              return res.status(200).json({data: message})
+          }
+      });
+    }catch (err) {
+      return res.status(404).json({error: err})
+    }
+  }
+  getMessage(req, res);
  }
 }
