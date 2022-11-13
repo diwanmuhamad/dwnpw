@@ -5,6 +5,7 @@ import styles from '../../styles/Home.module.css';
 import styleLogin from '../../styles/adminlogin.module.css';
 import {hashpass} from '../../helperFunc/cryptpass';
 import Link from 'next/link'
+import { useRouter } from 'next/router';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 // import the icons you need
@@ -14,7 +15,9 @@ import {
 import axios from 'axios';
 
 
+
 export default function LoginRegister() {
+  const router = useRouter();
   const [navIcon, setNavIcon ] = React.useState('hamburger');
   const [inRegLog, setInRegLog] = React.useState('');
   const changeIcon = () => {
@@ -60,7 +63,8 @@ export default function LoginRegister() {
             headers:{"content-type" : "application/json"}
         }).then((res)=> {
             if (res.status == 200) {
-                console.log(res)
+                document.cookie= `jwt=Bearer ${res.data.token}; path=/;`;
+                router.push('/admin-secret/admins/dashboard')
             }
         }).catch((err)=>{
             console.log(err);

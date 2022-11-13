@@ -1,5 +1,6 @@
 var bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
+const jwt_decode = require('jwt-decode');
 
 export async function hashpass(pass) {
     return await bcrypt.hash(pass, 10).then(function(has) {
@@ -32,4 +33,10 @@ export function authenticateToken(req, res, next) {
   
       next()
     })
+  }
+
+
+  export function checkToken(token) {
+    let decoded = jwt_decode(token);
+    console.log(decoded);
   }
