@@ -1,0 +1,24 @@
+.cardMessage {
+    background-color: white;
+    border-radius: 8px;
+    width: 100%;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    padding: 15px;
+    height: 80vh;
+}
+
+.tableMessage {
+    border-collapse: collapse;
+    width: 100%;
+
+}
+  
+.trMessage > td, .trMessage > th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+}
+
+.trMessage:nth-child(even) {
+    background-color: #dddddd;
+}

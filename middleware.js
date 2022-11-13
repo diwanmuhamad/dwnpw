@@ -4,6 +4,7 @@ import { NextRequest } from 'next/server'
 import jwtDecode from 'jwt-decode';
 // This function can be marked `async` if using `await` inside
 function checkToken(token) {
+    if (!token) return false
     let decoded = jwtDecode(token);
     if (Date.now() > decoded.exp * 1000 || !decoded) {
         return false
