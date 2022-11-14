@@ -22,3 +22,18 @@
 .trMessage:nth-child(even) {
     background-color: #dddddd;
 }
+
+.formBlog {
+    width: 100%;
+}
+
+.formBlog > div {
+    display: flex;
+    flex-direction: column;
+    margin-top: 24px;
+    gap: 10px;
+}
+
+.descBlog {
+    height: 200px;
+}
