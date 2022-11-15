@@ -4,6 +4,7 @@ import Image from 'next/image'
 import styles from '../styles/Home.module.css';
 import author from '../public/assets/dwn1.png';
 import styleBlog from '../styles/Blog.module.css';
+import axios from "../src/axios";
 import Link from 'next/link'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
@@ -14,11 +15,27 @@ import {
 
 
 export default function Blog() {
+  const [blog, setBlog] = React.useState([]);
   const [navIcon, setNavIcon ] = React.useState('hamburger');
   const changeIcon = () => {
     if (navIcon === 'hamburger') return setNavIcon('xMark');
     return setNavIcon('hamburger')
   }
+
+  React.useEffect(()=> {
+      axios({
+          method: "GET",
+          url: '/api/blogAPI',
+          headers:{"content-type" : "application/json"}
+      }).then((res)=> {
+          if (res.status == 200) {
+              console.log(res);
+              setBlog(res.data.data.splice(0, 10))
+          }
+      }).catch((err)=>{
+          console.log(err);
+      })
+  }, [])
 
   return (
     <div >
@@ -57,44 +74,31 @@ export default function Blog() {
           : null
         }
 
-        <div className={styleBlog.blogMainContent}>
+        <div className={blog.length < 4 ? styleBlog.blogMainContent: styleBlog.blogMainContent2}>
             <div className={styleBlog.cardBlogContent}>
-                <div className={styleBlog.card}>
-                    <Image
-                        src={author}
-                        alt="Picture of the author"
-                        className={styleBlog.blogImage}
-                    />
-                    <div className={styleBlog.cardText}>
-                        <h5>Title</h5> 
-                        <p>Date</p> 
-                        <p>Description</p> 
+              {
+                blog?
+                blog.map((el) => {
+                  return (
+                    <div className={styleBlog.card} key={el._id}>
+                        <Image
+                            width={50}
+                            height={200}
+                            src={el.image}
+                            alt="Picture of the author"
+                            className={styleBlog.blogImage}
+                        />
+                        <div className={styleBlog.cardText}>
+                            <h5>{el.title}</h5> 
+                            <p>{(new Date(el.createdAt)).getDate() + "-" + ((new Date(el.createdAt)).getMonth()+1) + "-" + (new Date(el.createdAt)).getFullYear() }</p> 
+                            <p>{el.description.substring(0,21) + "..."}</p> 
+                        </div>
                     </div>
-                </div>
-                <div className={styleBlog.card}>
-                    <Image
-                        src={author}
-                        alt="Picture of the author"
-                        className={styleBlog.blogImage}
-                    />
-                    <div className={styleBlog.cardText}>
-                        <h5>Title</h5> 
-                        <p>Date</p> 
-                        <p>Description</p> 
-                    </div>
-                </div>
-                <div className={styleBlog.card}>
-                    <Image
-                        src={author}
-                        alt="Picture of the author"
-                        className={styleBlog.blogImage}
-                    />
-                    <div className={styleBlog.cardText}>
-                        <h5>Title</h5> 
-                        <p>Date</p> 
-                        <p>Description</p> 
-                    </div>
-                </div>
+                  )
+                })
+                : null
+              }
+               
             </div>
         </div>
       </main>

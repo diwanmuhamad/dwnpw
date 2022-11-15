@@ -1,19 +1,31 @@
 .blogMainContent {
     width: 100%;
     height: 77.5vh;
+    padding-bottom: 30px;
+
+}
+
+.blogMainContent2 {
+  width: 100%;
+  height: 100%;
+  padding-bottom: 24px;
+
 }
 
 .cardBlogContent {
     width: 80%;
     margin: auto;
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    gap: 30px;
 }
 
 .card {
     box-shadow: 0 10px 25px 0 rgb(1, 11, 20);
     transition: 0.3s;
     width: 30%;
+    min-width: 300px;
     cursor: pointer;
     border-radius: 5px;
     background-image: linear-gradient(90deg, rgba(0,0,0,1) 0%, rgba(7,46,54,1) 100%, rgba(12,9,38,1) 100%, rgba(14,46,73,1) 100%);
@@ -43,3 +55,37 @@
   .cardText > p {
     font-size: 15px;
   }
+
+  .headerBlogList {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .headerBlogList > button {
+    height: 40px;
+    background-color: white;
+    width: 70px;
+    border: 1px solid rgb(114, 109, 109);
+    cursor: pointer;
+    border-radius: 12px;
+  }
+
+  @media screen and (max-width: 1300px) {
+    .blogMainContent {
+      height: 100%;
+    }
+  }
+  @media screen and (max-width: 380px) {
+    .blogMainContent {
+      height: 100%;
+    }
+
+    .cardBlogContent {
+      width: 87%;
+    }
+  }
+
+
+ 

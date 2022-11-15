@@ -19,5 +19,22 @@ export default async function handler(req, res) {
 
     postBlog(req,res);
  }
+ else if (req.method == 'GET') {
+  async function getBlog(req, res) {
+    try {
+      blog.find({}, (err, blog) => {
+          if (err) {
+            return;
+              // return res.status(404).json({error: 'data not found'});
+          } else {
+              return res.status(200).json({data: blog})
+          }
+      });
+    }catch (err) {
+      return res.status(404).json({error: err})
+    }
+  }
+  getBlog(req, res);
+ }
 
 }
