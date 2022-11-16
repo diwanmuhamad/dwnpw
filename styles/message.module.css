@@ -37,3 +37,18 @@
 .descBlog {
     height: 200px;
 }
+.descWork {
+    height: 150px;
+}
+
+.formWork {
+    width: 100%;
+}
+
+.formWork > div {
+    display: flex;
+    flex-direction: column;
+    margin-top: 15px;
+    gap: 10px;
+}
+

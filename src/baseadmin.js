@@ -17,7 +17,7 @@ export default function BaseAdmin(props) {
                 <nav className={styleAdmin.sideNavbar}>
                     <h3>Message</h3>
                     <h3><Link href="/admin-secret/admins/listBlog">Blog</Link></h3>
-                    <h3>Works</h3>
+                    <h3><Link href="/admin-secret/admins/listWork">Works</Link></h3>
                 </nav>
                 <div>
                     <nav className={styleAdmin.topNavbar}>

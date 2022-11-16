@@ -2,7 +2,7 @@ import React from 'react';
 import axios from '../../../src/axios';
 import BaseAdmin from '../../../src/baseadmin';
 import styleMessage from '../../../styles/message.module.css';
-function BlogAddContent() {
+function WorkAddContent() {
     const [image, setImage] = React.useState("")
 
     function encodeImageFileAsURL(element) {
@@ -20,12 +20,13 @@ function BlogAddContent() {
             title: data.get('title'),
             image: image,
             description: data.get('description'),
+            url: data.get('url'),
             createdAt: new Date()
         }
         console.log(temp)
         axios({
             method: "POST",
-            url: '/api/blogAPI',
+            url: '/api/workAPI',
             data: temp,
             headers:{"content-type" : "application/json"}
         }).then((res) => {
@@ -38,19 +39,23 @@ function BlogAddContent() {
     }
   return (
     <div className={styleMessage.cardMessage}>
-        <h3>Add Blog</h3>
-        <form className={styleMessage.formBlog} onSubmit={handleSubmitBlog}>
+        <h3>Add Work</h3>
+        <form className={styleMessage.formWork} onSubmit={handleSubmitBlog}>
             <div>
-                <label  htmlFor="titleInputBlog">Title</label>
-                <input name="title" id="titleInputBlog"></input>
+                <label  htmlFor="titleInputWork">Title</label>
+                <input name="title" id="titleInputWork"></input>
             </div>
             <div>
-                <label  htmlFor="imageInputBlog">Upload Blog Image</label>
-                <input name="image"  accept="image/*" id="imageInputBlog" type="file" onChange={(event) => encodeImageFileAsURL(event)}></input>
+                <label  htmlFor="imageInputWork">Upload Work Image</label>
+                <input name="image"  accept="image/*" id="imageInputWork" type="file" onChange={(event) => encodeImageFileAsURL(event)}></input>
             </div>
             <div>
-                <label  htmlFor="descInputBlog">Description</label>
-                <textarea name="description" id="descInputBlog" className={styleMessage.descBlog}></textarea>
+                <label  htmlFor="descInputWork">Description</label>
+                <textarea name="description" id="descInputWork" className={styleMessage.descWork}></textarea>
+            </div>
+            <div>
+                <label  htmlFor="urlInputWork">Url</label>
+                <input name="url" id="urlInputWork"></input>
             </div>
             <button>Save</button>
         </form>
@@ -60,6 +65,6 @@ function BlogAddContent() {
 export default function AddBlog() {
    
   return (
-    <BaseAdmin content={<BlogAddContent/>}/>
+    <BaseAdmin content={<WorkAddContent/>}/>
   )
 }
