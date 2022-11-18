@@ -36,5 +36,19 @@ export default async function handler(req, res) {
   }
   getWork(req, res);
  }
+ else if (req.method == "DELETE") {
+  async function deleteWork(req, res) {
+    try {
+      console.log(req.query.id)
+      work.deleteOne({_id: req.query.id}, function (err) {
+        if(err) return res.status(404).json({err:err});
+        return res.status(200).json({info: 'Blog deleted'});
+      })
+    }catch (err) {
+      return res.status(404).json({error: err})
+    }
+  }
+  deleteWork(req, res);
+ }
 
 }

@@ -6,6 +6,21 @@ import styleBlog from '../../../styles/Blog.module.css';
 import Link from 'next/link';
 function ListBlogContent() {
     const [blog, setBlog] = React.useState([])
+    const [trigger, setTrigger] = React.useState(false)
+    const handleDelete = (id) => {
+        axios({
+            method:"DELETE",
+            url: '/api/blogAPI',
+            params: {id: id},
+            headers: {'content-type': 'application/json'},
+        }).then((res)=> {
+            console.log(res);
+            if (trigger) return setTrigger(false)
+            else return setTrigger(true) 
+        }).catch((err) => {
+            console.log(err);
+        })
+    }
     React.useEffect(()=> {
         axios({
             method: "GET",
@@ -19,7 +34,7 @@ function ListBlogContent() {
         }).catch((err)=>{
             console.log(err);
         })
-    }, [])
+    }, [trigger])
   return (
     <div className={styleMessage.cardMessage}>
         <div className={styleBlog.headerBlogList}>
@@ -44,7 +59,7 @@ function ListBlogContent() {
                                 <td>{(new Date(el.createdAt)).getDate() + "-" + ((new Date(el.createdAt)).getMonth()+1) + "-" + (new Date(el.createdAt)).getFullYear() }</td>
                                 <td>
                                     <button type="button">Edit</button>
-                                    <button type="button">Delete</button>
+                                    <button onClick={()=>{handleDelete(el._id)}} type="button">Delete</button>
                                 </td>
                             </tr>
                         )
