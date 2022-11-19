@@ -4,6 +4,9 @@ import work from "../../model/work";
 export default async function handler(req, res) {
  connectMongo().catch(()=>res.status(405).json({error: 'Error in the Connection'}))
  if (req.method == 'POST') {
+  let reqs = JSON.parse(req.body);
+  if (!reqs._id) {
+
     async function postWork(req, res) {
       try {
         const formData = req.body;
@@ -18,6 +21,23 @@ export default async function handler(req, res) {
     }
 
     postWork(req,res);
+  }
+  else {
+    async function changeWork(req, res) {
+      try {
+        const formData = JSON.parse(req.body);
+        if (!formData) return res.status(404).json({error: 'Data not provided'})
+        let newData = {...formData};
+        delete newData._id;
+        await work.findOneAndUpdate({_id: formData._id}, newData);
+        
+        
+      }catch (err) {
+        return res.status(404).json({error: err})
+      }
+    }
+    changeWork(req, res);
+  }
  }
  else if (req.method == 'GET') {
   async function getWork(req, res) {

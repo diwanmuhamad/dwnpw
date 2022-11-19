@@ -39,7 +39,7 @@ function ListBlogContent() {
     <div className={styleMessage.cardMessage}>
         <div className={styleBlog.headerBlogList}>
             <h3>Blog</h3>
-            <button type="button"><Link href="/admin-secret/admins/addBlog">Add data</Link></button>
+            <button type="button"><Link href="/admin-secret/admins/blog/Add">Add data</Link></button>
         </div>
         <table className={styleMessage.tableMessage}>
             <thead>
@@ -58,7 +58,9 @@ function ListBlogContent() {
                                 <td>{el.title}</td>
                                 <td>{(new Date(el.createdAt)).getDate() + "-" + ((new Date(el.createdAt)).getMonth()+1) + "-" + (new Date(el.createdAt)).getFullYear() }</td>
                                 <td>
-                                    <button type="button">Edit</button>
+                                    <Link href={`/admin-secret/admins/blog/${el._id}`}>                                    
+                                        <button type="button">Edit</button>
+                                    </Link>
                                     <button onClick={()=>{handleDelete(el._id)}} type="button">Delete</button>
                                 </td>
                             </tr>

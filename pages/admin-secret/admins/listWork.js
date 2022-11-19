@@ -39,7 +39,7 @@ function ListWorkContent() {
     <div className={styleMessage.cardMessage}>
         <div className={styleBlog.headerBlogList}>
             <h3>Work</h3>
-            <button type="button"><Link href="/admin-secret/admins/addWork">Add data</Link></button>
+            <button type="button"><Link href="/admin-secret/admins/work/Add">Add data</Link></button>
         </div>
         <table className={styleMessage.tableMessage}>
             <thead>
@@ -60,7 +60,10 @@ function ListWorkContent() {
                                 <td>{el.url}</td>
                                 <td>{(new Date(el.createdAt)).getDate() + "-" + ((new Date(el.createdAt)).getMonth()+1) + "-" + (new Date(el.createdAt)).getFullYear() }</td>
                                 <td>
-                                    <button type="button">Edit</button>
+                                    <Link href={`/admin-secret/admins/work/${el._id}`}>
+                                    
+                                        <button type="button">Edit</button>
+                                    </Link>
                                     <button onClick={() => handleDelete(el._id)} type="button">Delete</button>
                                 </td>
                             </tr>
