@@ -34,7 +34,7 @@ function ListBlogContent() {
         }).catch((err)=>{
             console.log(err);
         })
-        console.log(page)
+
     }, [trigger, page])
   return (
     <div className={styleMessage.cardMessage}>

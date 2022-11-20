@@ -45,14 +45,18 @@ export default async function handler(req, res) {
       work.find({}, (err, work) => {
           if (err) {
             return;
-              // return res.status(404).json({error: 'data not found'});
+            
           } else {
-              work = work.splice(req.query.page*7 - 7,req.query.page*7)
+              if (req.query.page) {
+                work = work.splice(req.query.page*7 - 7,req.query.page*7)
+              }
               return res.status(200).json({data: work})
+              
           }
       });
     }catch (err) {
       return res.status(404).json({error: err})
+     
     }
   }
   getWork(req, res);
@@ -60,8 +64,8 @@ export default async function handler(req, res) {
  else if (req.method == "DELETE") {
   async function deleteWork(req, res) {
     try {
-      console.log(req.query.id)
-      work.deleteOne({_id: req.query.id}, function (err) {
+
+      return work.deleteOne({_id: req.query.id}, function (err) {
         if(err) return res.status(404).json({err:err});
         return res.status(200).json({info: 'Blog deleted'});
       })
@@ -72,4 +76,10 @@ export default async function handler(req, res) {
   deleteWork(req, res);
  }
 
+}
+
+export const config = {
+  api: {
+      externalResolver: true
+  }
 }

@@ -18,7 +18,6 @@ function DashboardContent() {
         }).catch((err)=>{
             console.log(err);
         })
-        console.log(page)
     }, [page])
   return (
     <div className={styleMessage.cardMessage}>

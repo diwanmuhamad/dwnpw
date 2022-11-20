@@ -27,7 +27,6 @@ function WorkAddContent() {
                 url: data.get('url'),
                 createdAt: new Date()
             }
-            console.log(temp)
             axios({
                 method: "POST",
                 url: '/api/workAPI',
@@ -51,7 +50,6 @@ function WorkAddContent() {
                 url: data.get('url'),
                 createdAt: new Date()
             }
-            console.log(temp)
             axios({
                 method: "POST",
                 url: '/api/workAPI',

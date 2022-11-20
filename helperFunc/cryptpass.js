@@ -25,7 +25,7 @@ export function authenticateToken(req, res, next) {
     if (token == null) return res.sendStatus(401)
   
     jwt.verify(token, process.env.NEXT_PUBLIC_SECRET_KEY, (err, user) => {
-      console.log(err)
+
   
       if (err) return res.sendStatus(403)
   
@@ -38,5 +38,5 @@ export function authenticateToken(req, res, next) {
 
   export function checkToken(token) {
     let decoded = jwt_decode(token);
-    console.log(decoded);
+  
   }

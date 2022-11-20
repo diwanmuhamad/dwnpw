@@ -27,7 +27,6 @@ function BlogAddContent() {
                 description: data.get('description'),
                 createdAt: new Date()
             }
-            console.log(temp)
             axios({
                 method: "POST",
                 url: '/api/blogAPI',
@@ -50,7 +49,6 @@ function BlogAddContent() {
                 description: data.get('description'),
                 createdAt: new Date()
             }
-            console.log(temp)
             axios({
                 method: "POST",
                 url: '/api/blogAPI',

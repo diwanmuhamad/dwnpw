@@ -30,7 +30,6 @@ export default async function handler(req, res) {
                     if (err || users.length == 0) {
                         return res.status(404).json({error: "User not found"})
                     } else if (users.length > 0){
-                        console.log(users)
                         isSamePass(req.query.password, users[0].password)
                         .then((result) => {
                             if (result) {
@@ -53,3 +52,10 @@ export default async function handler(req, res) {
     getUser(req, res);
  }
 }
+
+
+export const config = {
+    api: {
+        externalResolver: true
+    }
+  }

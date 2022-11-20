@@ -30,13 +30,11 @@ function ListWorkContent() {
             headers:{"content-type" : "application/json"}
         }).then((res)=> {
             if (res.status == 200) {
-                console.log(res);
                 setWork(res.data.data.splice(0, 10))
             }
         }).catch((err)=>{
             console.log(err);
         })
-        console.log(page)
     }, [trigger, page])
   return (
     <div className={styleMessage.cardMessage}>

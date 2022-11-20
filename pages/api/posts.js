@@ -37,3 +37,9 @@ export default async function handler(req, res) {
   getMessage(req, res);
  }
 }
+
+export const config = {
+  api: {
+      externalResolver: true
+  }
+}
