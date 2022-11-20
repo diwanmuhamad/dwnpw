@@ -86,4 +86,27 @@
   }
 
 
+.mainBlogUserContent {
+  width: 100%;
+  background-color: white;
+  padding-top: 20px;
+}
+
+.blogContent {
+  width: 80%;
+  margin: auto;
+}
+
+.blogContent > h3 {
+  font-size: 30px;
+}
+
+.blogImageUser {
+  width: 100%;
+  object-fit: cover;
+  height: 350px;
+  border-radius: 8px;
+}
+
+
  

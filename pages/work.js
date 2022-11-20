@@ -90,7 +90,7 @@ export default function Blog() {
                         />
                         <div className={styleBlog.cardText}>
                             <h5>{el.title}</h5> 
-                            <p>{(new Date(el.createdAt)).getDate() + "-" + ((new Date(el.createdAt)).getMonth()+1) + "-" + (new Date(el.createdAt)).getFullYear() }</p> 
+                            <p>{(new Date(el.createdAt)).getDate() + " " + ((new Date(el.createdAt)).toLocaleString('default', { month: 'long' })) + " " + (new Date(el.createdAt)).getFullYear() }</p> 
                             <p>{el.description.substring(0,21) + "..."}</p> 
                         </div>
                     </div>

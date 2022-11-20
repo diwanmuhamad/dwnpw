@@ -14,7 +14,6 @@ function ListBlogContent() {
             params: {id: id},
             headers: {'content-type': 'application/json'},
         }).then((res)=> {
-            console.log(res);
             if (trigger) return setTrigger(false)
             else return setTrigger(true) 
         }).catch((err) => {
@@ -28,7 +27,6 @@ function ListBlogContent() {
             headers:{"content-type" : "application/json"}
         }).then((res)=> {
             if (res.status == 200) {
-                console.log(res);
                 setBlog(res.data.data.splice(0, 10))
             }
         }).catch((err)=>{

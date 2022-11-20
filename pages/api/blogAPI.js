@@ -40,9 +40,10 @@ export default async function handler(req, res) {
     }
  }
  else if (req.method == 'GET') {
+ 
   async function getBlog(req, res) {
     try {
-      blog.find({}, (err, blog) => {
+      blog.find((req.query.title? {title: req.query.title} : {}), (err, blog) => {
           if (err) {
             return;
               // return res.status(404).json({error: 'data not found'});
@@ -70,8 +71,6 @@ export default async function handler(req, res) {
   }
   deleteBlog(req, res);
  }
- else if (req.method == "PUT") {
-  
- }
+ 
 
 }
