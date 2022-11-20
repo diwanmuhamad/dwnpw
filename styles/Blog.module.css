@@ -2,7 +2,8 @@
     width: 100%;
     min-height: 77.5vh;
     padding-bottom: 30px;
-
+    animation-name: moveIn;
+    animation-duration: 2s;
 }
 
 .blogMainContent2 {
@@ -73,6 +74,15 @@
     border-radius: 12px;
   }
 
+  .buttonAdd {
+    height: 40px;
+    background-color: white;
+    width: 70px;
+    border: 1px solid rgb(114, 109, 109);
+    cursor: pointer;
+    border-radius: 12px;
+  }
+
   @media screen and (max-width: 1300px) {
     .blogMainContent {
       height: 100%;
@@ -108,5 +118,9 @@
   border-radius: 8px;
 }
 
+@keyframes moveIn {
+  0% {position: relative; left: -500px;}
+100% {position: relative; left: 0%;}
+}
 
  

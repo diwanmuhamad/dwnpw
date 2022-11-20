@@ -48,6 +48,7 @@ export default async function handler(req, res) {
             return;
               // return res.status(404).json({error: 'data not found'});
           } else {
+              blog = blog.splice(req.query.page*7 - 7,req.query.page*7)
               return res.status(200).json({data: blog})
           }
       });

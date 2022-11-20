@@ -6,6 +6,7 @@ import styleBlog from '../../../styles/Blog.module.css';
 import Link from 'next/link';
 function ListBlogContent() {
     const [blog, setBlog] = React.useState([])
+    const [page, setPage] = React.useState(1)
     const [trigger, setTrigger] = React.useState(false)
     const handleDelete = (id) => {
         axios({
@@ -24,6 +25,7 @@ function ListBlogContent() {
         axios({
             method: "GET",
             url: '/api/blogAPI',
+            params: {page: page},
             headers:{"content-type" : "application/json"}
         }).then((res)=> {
             if (res.status == 200) {
@@ -32,12 +34,13 @@ function ListBlogContent() {
         }).catch((err)=>{
             console.log(err);
         })
-    }, [trigger])
+        console.log(page)
+    }, [trigger, page])
   return (
     <div className={styleMessage.cardMessage}>
         <div className={styleBlog.headerBlogList}>
             <h3>Blog</h3>
-            <button type="button"><Link href="/admin-secret/admins/blog/Add">Add data</Link></button>
+            <Link href="/admin-secret/admins/blog/Add"><button className={styleBlog.buttonAdd} type="button">Add data</button></Link>
         </div>
         <table className={styleMessage.tableMessage}>
             <thead>
@@ -70,6 +73,12 @@ function ListBlogContent() {
 
             </tbody>
         </table>
+        <button onClick={() => {
+            if (page - 1 > 0) {
+                setPage((page) => page - 1)
+            }
+        }}>Prev</button>
+        <button onClick={() => setPage((page) => page+1)}>Next</button>
     </div>
   )
 }

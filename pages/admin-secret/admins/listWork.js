@@ -7,6 +7,7 @@ import Link from 'next/link';
 function ListWorkContent() {
     const [work, setWork] = React.useState([])
     const [trigger, setTrigger] = React.useState(false)
+    const [page, setPage] = React.useState(1)
     const handleDelete = (id) => {
         axios({
             method:"DELETE",
@@ -25,6 +26,7 @@ function ListWorkContent() {
         axios({
             method: "GET",
             url: '/api/workAPI',
+            params: {page: page},
             headers:{"content-type" : "application/json"}
         }).then((res)=> {
             if (res.status == 200) {
@@ -34,7 +36,8 @@ function ListWorkContent() {
         }).catch((err)=>{
             console.log(err);
         })
-    }, [trigger])
+        console.log(page)
+    }, [trigger, page])
   return (
     <div className={styleMessage.cardMessage}>
         <div className={styleBlog.headerBlogList}>
@@ -75,6 +78,12 @@ function ListWorkContent() {
 
             </tbody>
         </table>
+        <button onClick={() => {
+            if (page - 1 > 0) {
+                setPage((page) => page - 1)
+            }
+        }}>Prev</button>
+        <button onClick={() => setPage((page) => page+1)}>Next</button>
     </div>
   )
 }
