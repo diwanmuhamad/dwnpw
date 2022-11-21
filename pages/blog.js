@@ -4,6 +4,7 @@ import Image from 'next/image'
 import styles from '../styles/Home.module.css';
 import styleBlog from '../styles/Blog.module.css';
 import axios from "../src/axios";
+import loading from "../public/assets/loading.gif";
 import Link from 'next/link'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
@@ -75,7 +76,7 @@ export default function Blog() {
         <div className={blog.length < 4 ? styleBlog.blogMainContent: styleBlog.blogMainContent2}>
             <div className={styleBlog.cardBlogContent}>
               {
-                blog?
+                blog.length > 0?
                 blog.map((el) => {
                   return (
                     <Link key={el._id} href={`/blogPage/${el.title.split(" ").join("-")}`}> 
@@ -96,7 +97,14 @@ export default function Blog() {
                     </Link>
                   )
                 })
-                : null
+                : 
+                <Image
+                    width={100}
+                    height={100}
+                    src={loading}
+                    alt="loading"
+                    className={styleBlog.loadingImage}
+                />
               }
                
             </div>

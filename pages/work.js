@@ -4,6 +4,7 @@ import Image from 'next/image'
 import styles from '../styles/Home.module.css';
 import styleBlog from '../styles/Blog.module.css';
 import axios from "../src/axios";
+import loading from "../public/assets/loading.gif";
 import Link from 'next/link'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
@@ -13,7 +14,7 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 
 
-export default function Blog() {
+export default function Work() {
   const [work, setWork] = React.useState([]);
   const [navIcon, setNavIcon ] = React.useState('hamburger');
   const changeIcon = () => {
@@ -75,7 +76,7 @@ export default function Blog() {
         <div className={work.length < 4 ? styleBlog.blogMainContent: styleBlog.blogMainContent2}>
             <div className={styleBlog.cardBlogContent}>
               {
-                work?
+                work.length > 0 ?
                 work.map((el) => {
                   return (
                     <Link href={el.url} key={el._id} target="_blank"><div className={styleBlog.card} >
@@ -94,8 +95,16 @@ export default function Blog() {
                     </div>
                     </Link>
                   )
-                })
-                : null
+                }) 
+                : 
+                <Image
+                    width={100}
+                    height={100}
+                    src={loading}
+                    alt="loading"
+                    className={styleBlog.loadingImage}
+                />
+
               }
                
             </div>
