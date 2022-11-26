@@ -86,6 +86,10 @@ export default function Home() {
                     <div className={styleBlog.blogContent}>
                         <h3>{data.title}</h3>
                         {
+                          data.createdAt && 
+                          <small><em>Published on {(new Date(data.createdAt)).getDate() + " " + ((new Date(data.createdAt)).toLocaleString('default', { month: 'long' })) + " " + (new Date(data.createdAt)).getFullYear() }</em></small>
+                        }
+                        {
                             data.image &&
                             <Image
                             width={100}
@@ -95,10 +99,7 @@ export default function Home() {
                             className={styleBlog.blogImageUser}
                             />
                         }
-                        {
-                          data.createdAt && 
-                          <p>{(new Date(data.createdAt)).getDate() + " " + ((new Date(data.createdAt)).toLocaleString('default', { month: 'long' })) + " " + (new Date(data.createdAt)).getFullYear() }</p>
-                        }
+                        
                         {
                             data.description &&
                             <div id="desc">

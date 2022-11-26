@@ -82,16 +82,29 @@
     cursor: pointer;
     border-radius: 12px;
   }
+  .blogContent > h3 {
+    font-size: 52px;
+    margin: 0;
+  }
 
   @media screen and (max-width: 1300px) {
     .blogMainContent {
       height: 100%;
     }
   }
+
+  @media screen and (max-width: 680px) {
+    .blogContent > h3 {
+      font-size: 40px;
+    }
+   }
   @media screen and (max-width: 380px) {
 
     .cardBlogContent {
       width: 87%;
+    }
+    .blogContent > h3 {
+      font-size: 34px;
     }
   }
 
@@ -105,11 +118,9 @@
 .blogContent {
   width: 80%;
   margin: auto;
+  max-width: 900px;
 }
 
-.blogContent > h3 {
-  font-size: 30px;
-}
 
 .blogImageUser {
   width: 100%;
