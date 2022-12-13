@@ -104,10 +104,19 @@
       font-size: 40px;
     }
    }
+
+   @media screen and (max-width: 450px) {
+    .cardBlogContent {
+      width: 95%;
+    }
+   }
   @media screen and (max-width: 380px) {
 
     .cardBlogContent {
-      width: 87%;
+      width: 100%;
+    }
+    .card {
+      min-width: 285px;
     }
     .blogContent > h3 {
       font-size: 34px;
