@@ -15,11 +15,17 @@
 
 .cardBlogContent {
     width: 80%;
+    /* border: 2px solid white; */
     margin: auto;
-    display: flex;
+    /* display: flex;
     justify-content: flex-start;
     flex-wrap: wrap;
-    gap: 30px;
+    gap: 40px; */
+    display: grid;
+    gap: 1rem;
+    padding-left: 2rem;
+    row-gap: 3rem;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
 }
 
 .card {
@@ -108,7 +114,13 @@
     }
   }
 
+  /* @media (min-width: 600px) {
+    .cardBlogContent { grid-template-columns: repeat(2, 1fr); }
+  }
 
+  @media (min-width: 900px) {
+    .cards { grid-template-columns: repeat(3, 1fr); }
+  } */
 .mainBlogUserContent {
   width: 100%;
   background-color: white;
