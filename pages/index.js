@@ -14,10 +14,22 @@ import {
 
 export default function Home() {
   const [navIcon, setNavIcon ] = React.useState('hamburger');
+  const [activity, setActivity] = React.useState('Software Developer');
   const changeIcon = () => {
     if (navIcon === 'hamburger') return setNavIcon('xMark');
     return setNavIcon('hamburger')
   }
+
+  React.useEffect(()=> {
+    const changeActivity = setInterval(function() {
+      if (activity == 'Software Developer') {setActivity('Traveller') }
+      else if (activity == 'Traveller') {setActivity('Musician')}
+      else if (activity == 'Musician') {setActivity('Software Developer')};
+
+    }, 3000)
+
+    return ()=> {clearInterval(changeActivity)};
+  }, [activity])
 
   return (
     <div >
@@ -65,7 +77,7 @@ export default function Home() {
           <div className={styles.textContent}>
             <p className={styles.titleLogo} style={{fontSize: '23px'}}>Hi Everyone<span style={{color: 'yellow'}}>!</span></p>
             <p className={styles.nameTitle}>I<span style={{color: 'yellow'}}>'</span>m Diwan Muhamad<span style={{color: 'yellow'}}>.</span></p>
-            <p className={styles.subtitle}>Software Developer<span style={{color: 'yellow'}}>.</span></p>
+            <p className={styles.subtitle}>{activity}<span style={{color: 'yellow'}}>.</span></p>
             <Link href="/contact">
               <div className={styles.buttonGetInTouch}>
                 <p style={{marginTop: '22px'}}>GET IN TOUCH</p>
