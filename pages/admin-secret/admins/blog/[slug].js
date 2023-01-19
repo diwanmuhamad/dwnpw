@@ -24,6 +24,7 @@ function BlogAddContent() {
             let temp = {
                 title: data.get('title'),
                 image: image,
+                view: 0,
                 description: data.get('description'),
                 createdAt: new Date()
             }

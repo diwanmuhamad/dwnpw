@@ -25,16 +25,29 @@ export default function Home() {
   }
   React.useEffect(() => {
     axios({
-        method: "GET",
-        params: {title: slug ? slug.split("-").join(" ") : ""},
-        url: '/api/blogAPI',
-        headers:{"content-type" : "application/json"}
+      method: "POST",
+      params: {title: slug ? slug.split("-").join(" ") : ""},
+      data: {addView: true},
+      url: '/api/blogAPI',
+      headers:{"content-type" : "application/json"}
     }).then((res)=> {
-        setData(res.data.data[0])
+      console.log(res)
+        setData(res.data.data)
         
     }).catch((err)=>{
         console.log(err)
     })
+    // axios({
+    //     method: "GET",
+    //     params: {title: slug ? slug.split("-").join(" ") : ""},
+    //     url: '/api/blogAPI',
+    //     headers:{"content-type" : "application/json"}
+    // }).then((res)=> {
+    //     setData(res.data.data[0])
+        
+    // }).catch((err)=>{
+    //     console.log(err)
+    // })
   },[])
 
   React.useEffect(() => {
@@ -87,7 +100,10 @@ export default function Home() {
                         <h3>{data.title}</h3>
                         {
                           data.createdAt && 
-                          <small><em>Published on {(new Date(data.createdAt)).getDate() + " " + ((new Date(data.createdAt)).toLocaleString('default', { month: 'long' })) + " " + (new Date(data.createdAt)).getFullYear() }</em></small>
+                          <div style={{width: '100%', display: "flex", justifyContent: 'space-between'}}>
+                            <small><em>Published on {(new Date(data.createdAt)).getDate() + " " + ((new Date(data.createdAt)).toLocaleString('default', { month: 'long' })) + " " + (new Date(data.createdAt)).getFullYear() }</em></small>
+                            <small>Views: {data.view}</small>
+                          </div>
                         }
                         {
                             data.image &&
